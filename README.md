@@ -4,6 +4,8 @@
 + Apache Maven 3.6.1
 + jdk 1.8.0_221
 + Git 2.22.0.windows.1
+## 注意
++ 要求docker卷绑定
 ## 流程
 + 克隆项目
 + Git bash中：
