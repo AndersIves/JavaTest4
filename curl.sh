@@ -13,7 +13,7 @@ echo "$status"
 
 
 echo -e "\033[31m #select film by pageSize=2 page=1\033[0m"
-data=$(curl -s -X GET -d "pageSize=2&page=1" "http://localhost:18080/film/")
+data=$(curl -s "http://localhost:18080/film/?pageSize=2&page=1")
 echo "data = $data "
 
 

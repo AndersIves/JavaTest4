@@ -42,7 +42,7 @@ public class CustomerController  {
     }
 
     @DeleteMapping("/delete")
-    public void delete(int id){
+    public void delete(@RequestParam("id") int id){
         logger.info("delete customer "+id);
         customerService.delete(id);
     }

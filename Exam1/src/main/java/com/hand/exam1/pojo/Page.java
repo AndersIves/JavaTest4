@@ -1,7 +1,7 @@
 package com.hand.exam1.pojo;
 
-
 public class Page {
+
     private int pageSize;
     private int page;
     private String sort = "ASC";

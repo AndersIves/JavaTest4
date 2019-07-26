@@ -21,7 +21,7 @@ public class FilmService implements IFilmService {
 
     @Override
     public List<Film> selectByPage(Page page) {
-        PageHelper.startPage(page.getPage(),page.getPageSize(),page.getSort());
+        PageHelper.startPage(page.getPage(),page.getPageSize());
         List<Film> films = filmMapper.selectAll();
         return films;
     }

@@ -1,5 +1,6 @@
 package com.hand.exam1.controller;
 
+import com.hand.exam1.anno.AnnPage;
 import com.hand.exam1.pojo.Film;
 import com.hand.exam1.pojo.Page;
 import com.hand.exam1.service.impl.FilmService;
@@ -19,13 +20,9 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
     @GetMapping("/")
-    public List<Film> list(Page page){
+    public List<Film> list(@AnnPage("page") Page page){
         logger.info("select film by "+page);
-        List<Film> f = filmService.selectByPage(page);
-        List<Film> o = new ArrayList<>();
-        o.add(f.get(0));
-        o.add(f.get(1));
-        return o;
+        return filmService.selectByPage(page);
     }
     @PostMapping("/insert")
     public int insert(Film film){
