@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,7 +21,11 @@ public class FilmController {
     @GetMapping("/")
     public List<Film> list(Page page){
         logger.info("select film by "+page);
-        return filmService.selectByPage(page);
+        List<Film> f = filmService.selectByPage(page);
+        List<Film> o = new ArrayList<>();
+        o.add(f.get(0));
+        o.add(f.get(1));
+        return o;
     }
     @PostMapping("/insert")
     public int insert(Film film){
