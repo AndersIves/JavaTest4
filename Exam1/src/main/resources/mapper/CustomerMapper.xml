@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hand.exam1.mapper.CustomerMapper">
+    <insert id="insert" parameterType="com.hand.exam1.pojo.Customer">
+        insert into customer(store_id,first_name,last_name,email,address_id,create_date)
+            value (#{storeId},#{firstName},#{lastName},#{email},#{addressId},#{createDate})
+        <selectKey resultType="java.lang.Integer" keyProperty="customerId" >
+            SELECT @@IDENTITY AS ID
+        </selectKey>
+    </insert>
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from customer where customer_id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.hand.exam1.pojo.Customer">
+        update customer set store_id = #{storeId},  first_name = #{firstName}, last_name = #{lastName}, email = #{email}, address_id = #{addressId}, create_date = #{createDate}
+            where customer_id = #{customerId}
+    </update>
+</mapper>

@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    type: com.mysql.cj.jdbc.MysqlDataSource
+    url: jdbc:mysql://${MYSQL_IP}:${MYSQL_PORT}/sakila
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+#  datasource:
+#    type: com.mysql.cj.jdbc.MysqlDataSource
+#    url: jdbc:mysql://localhost:3306/sakila
+#    username: root
+#    password: root
+server:
+  port: 18080
+mybatis:
+  type-aliases-package: com.hand.exam1.pojo
+  mapper-locations: mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  file: exam1.log
+  level:
+    root: error
+    com.hand: info
