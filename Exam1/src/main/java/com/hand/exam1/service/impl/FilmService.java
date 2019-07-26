@@ -15,8 +15,9 @@ public class FilmService implements IFilmService {
     @Autowired
     FilmMapper filmMapper;
     @Override
-    public int insert(Film film) {
-        return filmMapper.insert(film);
+    public long insert(Film film) {
+        filmMapper.insert(film);
+        return film.getFilmId();
     }
 
     @Override

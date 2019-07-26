@@ -18,7 +18,7 @@ public class CustomerController  {
     private Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @PostMapping("/login")
-    public String login(String name,String password){
+    public String login(@RequestParam("name") String name,@RequestParam("password") String password){
         logger.info("login customer "+name+" "+password);
         if(customerService.login(name,password)){
             return "success login";
@@ -28,21 +28,21 @@ public class CustomerController  {
         }
     }
 
-    @PostMapping("/insert")
-    public int insert(Customer customer){
+    @PostMapping("/")
+    public int insert(@RequestBody Customer customer){
         logger.info("insert customer "+customer);
         return customerService.insert(customer);
     }
 
-    @PutMapping("/update")
-    public Customer update(Customer customer){
+    @PutMapping("/{customerId}")
+    public Customer update(@PathVariable("customerId") int id,@RequestBody Customer customer){
         logger.info("update customer "+customer);
-        customerService.update(customer);
+        customerService.update(id,customer);
         return customer;
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam("id") int id){
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") int id){
         logger.info("delete customer "+id);
         customerService.delete(id);
     }

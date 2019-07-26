@@ -4,4 +4,4 @@ sh build.sh
 sh start.sh
 echo ""
 echo "press any key to continue"
-read -n 1
+#read -n 1

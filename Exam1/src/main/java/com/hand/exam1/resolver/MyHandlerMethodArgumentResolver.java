@@ -24,7 +24,6 @@ public class MyHandlerMethodArgumentResolver implements HandlerMethodArgumentRes
         try {
             page.setPageSize(Integer.parseInt(request.getParameter("pageSize")));
             page.setPage(Integer.parseInt(request.getParameter("page")));
-            System.out.println(page);
             return page;
         } catch (NumberFormatException e) {
             return false;

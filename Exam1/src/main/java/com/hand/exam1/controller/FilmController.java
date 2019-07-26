@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,8 +23,8 @@ public class FilmController {
         logger.info("select film by "+page);
         return filmService.selectByPage(page);
     }
-    @PostMapping("/insert")
-    public int insert(Film film){
+    @PostMapping("/")
+    public long insert(@RequestBody Film film){
         logger.info("insert into film "+film);
         return filmService.insert(film);
     }

@@ -6,6 +6,6 @@ import com.hand.exam1.pojo.Page;
 import java.util.List;
 
 public interface IFilmService {
-    int insert(Film film);
+    long insert(Film film);
     List<Film> selectByPage(Page page);
 }

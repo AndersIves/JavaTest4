@@ -8,6 +8,7 @@ import com.hand.exam1.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,6 +37,7 @@ public class CustomerService implements ICustomerService {
     public int insert(Customer customer) {
         List<Address> address = addressMapper.selectById(customer.getAddressId());
         if(address.size()!=0){
+            customer.setCreateDate(new java.sql.Timestamp(System.currentTimeMillis()));
             customerMapper.insert(customer);
             return (int)customer.getCustomerId();
         }
@@ -45,7 +47,9 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void update(Customer customer) {
+    public void update(int id,Customer customer) {
+        customer.setCustomerId(id);
+        customer.setCreateDate(new java.sql.Timestamp(System.currentTimeMillis()));
         customerMapper.update(customer);
     }
 
