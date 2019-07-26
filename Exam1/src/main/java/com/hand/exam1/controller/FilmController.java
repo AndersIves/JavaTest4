@@ -20,6 +20,8 @@ public class FilmController {
     @GetMapping("/")
     public List<Film> list(String pageSize, String page){
         Page p = new Page();
+        p.setPageSize(Integer.parseInt(pageSize));
+        p.setPage(Integer.parseInt(page));
         logger.info("select film by "+p);
         return filmService.selectByPage(p);
     }
