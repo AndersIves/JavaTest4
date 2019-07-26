@@ -18,12 +18,9 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
     @GetMapping("/")
-    public List<Film> list(String pageSize, String page){
-        Page p = new Page();
-        p.setPageSize(Integer.parseInt(pageSize));
-        p.setPage(Integer.parseInt(page));
-        logger.info("select film by "+p);
-        return filmService.selectByPage(p);
+    public List<Film> list(Page page){
+        logger.info("select film by "+page);
+        return filmService.selectByPage(page);
     }
     @PostMapping("/insert")
     public int insert(Film film){
